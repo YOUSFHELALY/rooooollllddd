@@ -55,6 +55,7 @@ function Register() {
     const { data, error } = await supabase.auth.signUp({
       email: formData.email.trim(),
       password: formData.password,
+
       options: {
         data: {
           full_name: formData.fullName.trim(),
@@ -82,16 +83,23 @@ function Register() {
   return (
     <div className="min-h-screen bg-[#050816] text-white">
 
+      {/* Background */}
+
       <div className="absolute inset-0 overflow-hidden">
+
         <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-purple-600/10 blur-[140px]" />
+
         <div className="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-purple-900/10 blur-[140px]" />
+
       </div>
+
 
       <div className="relative flex min-h-screen items-center justify-center px-6 py-12">
 
         <div className="w-full max-w-md">
 
           {/* Header */}
+
           <div className="mb-10 text-center">
 
             <p className="text-sm font-medium uppercase tracking-[0.3em] text-purple-400">
@@ -108,7 +116,9 @@ function Register() {
 
           </div>
 
+
           {/* Card */}
+
           <div className="rounded-3xl border border-white/10 bg-[#07102B]/80 p-8 shadow-2xl shadow-black/20 backdrop-blur-xl">
 
             <form
@@ -117,6 +127,7 @@ function Register() {
             >
 
               {/* Full Name */}
+
               <div>
 
                 <label
@@ -134,12 +145,15 @@ function Register() {
                   onChange={handleChange}
                   placeholder="Enter your full name"
                   disabled={loading}
+                  autoComplete="name"
                   className="w-full rounded-xl border border-white/10 bg-[#050816] px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-purple-500/60 focus:ring-2 focus:ring-purple-500/10 disabled:opacity-50"
                 />
 
               </div>
 
+
               {/* Email */}
+
               <div>
 
                 <label
@@ -157,12 +171,15 @@ function Register() {
                   onChange={handleChange}
                   placeholder="Enter your email"
                   disabled={loading}
+                  autoComplete="email"
                   className="w-full rounded-xl border border-white/10 bg-[#050816] px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-purple-500/60 focus:ring-2 focus:ring-purple-500/10 disabled:opacity-50"
                 />
 
               </div>
 
+
               {/* Password */}
+
               <div>
 
                 <label
@@ -180,12 +197,15 @@ function Register() {
                   onChange={handleChange}
                   placeholder="Create a password"
                   disabled={loading}
+                  autoComplete="new-password"
                   className="w-full rounded-xl border border-white/10 bg-[#050816] px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-purple-500/60 focus:ring-2 focus:ring-purple-500/10 disabled:opacity-50"
                 />
 
               </div>
 
+
               {/* Confirm Password */}
+
               <div>
 
                 <label
@@ -203,30 +223,42 @@ function Register() {
                   onChange={handleChange}
                   placeholder="Confirm your password"
                   disabled={loading}
+                  autoComplete="new-password"
                   className="w-full rounded-xl border border-white/10 bg-[#050816] px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-purple-500/60 focus:ring-2 focus:ring-purple-500/10 disabled:opacity-50"
                 />
 
               </div>
 
+
               {/* Error */}
+
               {error && (
+
                 <div className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-400">
                   {error}
                 </div>
+
               )}
 
+
               {/* Success */}
+
               {success && (
+
                 <div className="rounded-xl border border-green-500/20 bg-green-500/10 px-4 py-3 text-sm leading-6 text-green-400">
                   {success}
                 </div>
+
               )}
 
+
               {/* Terms */}
+
               <div className="flex items-start gap-3">
 
                 <input
                   id="terms"
+                  name="terms"
                   type="checkbox"
                   required
                   disabled={loading}
@@ -242,18 +274,24 @@ function Register() {
 
               </div>
 
+
               {/* Submit */}
+
               <button
                 type="submit"
                 disabled={loading}
                 className="w-full rounded-xl bg-purple-500 px-5 py-3.5 font-semibold text-white shadow-lg shadow-purple-500/20 transition duration-300 hover:bg-purple-400 hover:shadow-purple-500/30 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {loading ? 'Creating Account...' : 'Create Account'}
+                {loading
+                  ? 'Creating Account...'
+                  : 'Create Account'}
               </button>
 
             </form>
 
+
             {/* Login */}
+
             <div className="my-7 flex items-center gap-4">
 
               <div className="h-px flex-1 bg-white/10" />
@@ -266,6 +304,7 @@ function Register() {
 
             </div>
 
+
             <Link
               to="/login"
               className="block w-full rounded-xl border border-white/10 bg-white/[0.03] px-5 py-3.5 text-center font-semibold text-gray-300 transition duration-300 hover:border-purple-500/30 hover:bg-purple-500/10 hover:text-white"
@@ -275,7 +314,9 @@ function Register() {
 
           </div>
 
+
           {/* Back */}
+
           <div className="mt-8 text-center">
 
             <Link
@@ -286,6 +327,9 @@ function Register() {
             </Link>
 
           </div>
+
+
+          {/* Copyright */}
 
           <p className="mt-8 text-center text-xs text-gray-600">
             © 2026 ZNU Robotics Community
