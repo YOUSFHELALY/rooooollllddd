@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
 import { supabase } from '../../Lib/supabase'
 
 function Register() {
@@ -60,6 +59,9 @@ function Register() {
         data: {
           full_name: formData.fullName.trim(),
         },
+
+        // After email confirmation, return the user to the dashboard
+        emailRedirectTo: `${window.location.origin}/dashboard`,
       },
     })
 
@@ -84,22 +86,16 @@ function Register() {
     <div className="min-h-screen bg-[#050816] text-white">
 
       {/* Background */}
-
       <div className="absolute inset-0 overflow-hidden">
-
         <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-purple-600/10 blur-[140px]" />
-
         <div className="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-purple-900/10 blur-[140px]" />
-
       </div>
-
 
       <div className="relative flex min-h-screen items-center justify-center px-6 py-12">
 
         <div className="w-full max-w-md">
 
           {/* Header */}
-
           <div className="mb-10 text-center">
 
             <p className="text-sm font-medium uppercase tracking-[0.3em] text-purple-400">
@@ -116,9 +112,7 @@ function Register() {
 
           </div>
 
-
           {/* Card */}
-
           <div className="rounded-3xl border border-white/10 bg-[#07102B]/80 p-8 shadow-2xl shadow-black/20 backdrop-blur-xl">
 
             <form
@@ -127,9 +121,7 @@ function Register() {
             >
 
               {/* Full Name */}
-
               <div>
-
                 <label
                   htmlFor="fullName"
                   className="mb-2 block text-sm font-medium text-gray-300"
@@ -148,14 +140,10 @@ function Register() {
                   autoComplete="name"
                   className="w-full rounded-xl border border-white/10 bg-[#050816] px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-purple-500/60 focus:ring-2 focus:ring-purple-500/10 disabled:opacity-50"
                 />
-
               </div>
 
-
               {/* Email */}
-
               <div>
-
                 <label
                   htmlFor="email"
                   className="mb-2 block text-sm font-medium text-gray-300"
@@ -174,14 +162,10 @@ function Register() {
                   autoComplete="email"
                   className="w-full rounded-xl border border-white/10 bg-[#050816] px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-purple-500/60 focus:ring-2 focus:ring-purple-500/10 disabled:opacity-50"
                 />
-
               </div>
 
-
               {/* Password */}
-
               <div>
-
                 <label
                   htmlFor="password"
                   className="mb-2 block text-sm font-medium text-gray-300"
@@ -200,14 +184,10 @@ function Register() {
                   autoComplete="new-password"
                   className="w-full rounded-xl border border-white/10 bg-[#050816] px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-purple-500/60 focus:ring-2 focus:ring-purple-500/10 disabled:opacity-50"
                 />
-
               </div>
 
-
               {/* Confirm Password */}
-
               <div>
-
                 <label
                   htmlFor="confirmPassword"
                   className="mb-2 block text-sm font-medium text-gray-300"
@@ -226,34 +206,23 @@ function Register() {
                   autoComplete="new-password"
                   className="w-full rounded-xl border border-white/10 bg-[#050816] px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-purple-500/60 focus:ring-2 focus:ring-purple-500/10 disabled:opacity-50"
                 />
-
               </div>
 
-
               {/* Error */}
-
               {error && (
-
                 <div className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-400">
                   {error}
                 </div>
-
               )}
 
-
               {/* Success */}
-
               {success && (
-
                 <div className="rounded-xl border border-green-500/20 bg-green-500/10 px-4 py-3 text-sm leading-6 text-green-400">
                   {success}
                 </div>
-
               )}
 
-
               {/* Terms */}
-
               <div className="flex items-start gap-3">
 
                 <input
@@ -274,9 +243,7 @@ function Register() {
 
               </div>
 
-
               {/* Submit */}
-
               <button
                 type="submit"
                 disabled={loading}
@@ -289,9 +256,7 @@ function Register() {
 
             </form>
 
-
             {/* Login */}
-
             <div className="my-7 flex items-center gap-4">
 
               <div className="h-px flex-1 bg-white/10" />
@@ -304,7 +269,6 @@ function Register() {
 
             </div>
 
-
             <Link
               to="/login"
               className="block w-full rounded-xl border border-white/10 bg-white/[0.03] px-5 py-3.5 text-center font-semibold text-gray-300 transition duration-300 hover:border-purple-500/30 hover:bg-purple-500/10 hover:text-white"
@@ -314,9 +278,7 @@ function Register() {
 
           </div>
 
-
           {/* Back */}
-
           <div className="mt-8 text-center">
 
             <Link
@@ -328,9 +290,7 @@ function Register() {
 
           </div>
 
-
           {/* Copyright */}
-
           <p className="mt-8 text-center text-xs text-gray-600">
             © 2026 ZNU Robotics Community
           </p>
