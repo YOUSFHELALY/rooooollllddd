@@ -7,12 +7,17 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const links = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/#about' },
-    { name: 'Teams', href: '/#teams' },
-    { name: 'Courses', href: '/#courses' },
-    { name: 'Events', href: '/#events' },
+    { name: 'Home', href: '#' },
+    { name: 'About', href: '#about' },
+    { name: 'Teams', href: '#teams' },
+    { name: 'Courses', href: '#courses' },
+    { name: 'Events', href: '#events' },
+    { name: 'Achievements', href: '#achievements' },
   ]
+
+  const handleNavClick = () => {
+    setMenuOpen(false)
+  }
 
   return (
     <nav className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-[#07102B]/90 backdrop-blur-md">
@@ -20,6 +25,7 @@ function Navbar() {
       <div className="mx-auto flex h-[86px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
         {/* Logo */}
+
         <Link
           to="/"
           onClick={() => setMenuOpen(false)}
@@ -32,27 +38,35 @@ function Navbar() {
           />
         </Link>
 
+
         {/* Desktop Menu */}
+
         <div className="hidden items-center gap-8 md:flex">
 
           {links.map((link, index) => (
-            <Link
+
+            <a
               key={link.name}
-              to={link.href}
+              href={link.href}
+              onClick={handleNavClick}
               className={`${
-                index === 0 ? 'text-white' : 'text-gray-400'
-              } text-sm transition hover:text-purple-400`}
+                index === 0
+                  ? 'text-white'
+                  : 'text-gray-400'
+              } text-sm transition duration-300 hover:text-purple-400`}
             >
               {link.name}
-            </Link>
+            </a>
+
           ))}
 
         </div>
 
+
         {/* Desktop Actions */}
+
         <div className="hidden items-center gap-3 md:flex">
 
-          {/* Login */}
           <Link
             to="/login"
             className="rounded-xl px-5 py-2.5 text-sm font-semibold text-gray-300 transition hover:bg-white/5 hover:text-white"
@@ -60,7 +74,6 @@ function Navbar() {
             Login
           </Link>
 
-          {/* Join Community */}
           <Link
             to="/register"
             className="rounded-xl border border-purple-400/40 bg-purple-500/10 px-5 py-2.5 text-sm font-semibold text-purple-300 transition hover:border-purple-400 hover:bg-purple-500/20"
@@ -70,7 +83,9 @@ function Navbar() {
 
         </div>
 
+
         {/* Mobile Menu Button */}
+
         <button
           type="button"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -83,26 +98,35 @@ function Navbar() {
 
       </div>
 
+
       {/* Mobile Menu */}
+
       {menuOpen && (
+
         <div className="border-t border-white/10 bg-[#07102B] px-4 pb-5 pt-4 md:hidden">
 
           <div className="flex flex-col gap-2">
 
             {links.map((link, index) => (
-              <Link
+
+              <a
                 key={link.name}
-                to={link.href}
-                onClick={() => setMenuOpen(false)}
+                href={link.href}
+                onClick={handleNavClick}
                 className={`${
-                  index === 0 ? 'text-purple-300' : 'text-gray-300'
+                  index === 0
+                    ? 'text-purple-300'
+                    : 'text-gray-300'
                 } rounded-lg px-4 py-3 text-sm transition hover:bg-white/5 hover:text-purple-300`}
               >
                 {link.name}
-              </Link>
+              </a>
+
             ))}
 
-            {/* Mobile Login */}
+
+            {/* Login */}
+
             <Link
               to="/login"
               onClick={() => setMenuOpen(false)}
@@ -111,7 +135,9 @@ function Navbar() {
               Login
             </Link>
 
-            {/* Mobile Join */}
+
+            {/* Join Community */}
+
             <Link
               to="/register"
               onClick={() => setMenuOpen(false)}
@@ -123,6 +149,7 @@ function Navbar() {
           </div>
 
         </div>
+
       )}
 
     </nav>
